@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Vinayak Doodh Products — Jaipur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #fdf6ec;
+      --saffron: #e8821a;
+      --deep: #1a0f00;
+      --gold: #c9853a;
+      --white: #ffffff;
+      --light: #fef9f2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5%;
+      background: rgba(253,246,236,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232,130,26,0.15);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--saffron);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--deep); }
+    nav a {
+      text-decoration: none; color: var(--deep);
+      font-size: 0.9rem; font-weight: 500;
+      opacity: 0.7; transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; color: var(--saffron); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-cta {
+      background: var(--saffron) !important;
+      color: var(--white) !important;
+      opacity: 1 !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 10rem 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,130,26,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '🧀';
+      position: absolute; right: 8%; top: 50%;
+      transform: translateY(-50%);
+      font-size: 12rem;
+      opacity: 0.12;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) rotate(-5deg); }
+      50% { transform: translateY(-53%) rotate(5deg); }
+    }
+    .hero-content { max-width: 620px; animation: fadeUp 0.8s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(232,130,26,0.12);
+      color: var(--saffron);
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 em { color: var(--saffron); font-style: normal; }
+    .hero p {
+      font-size: 1.1rem; line-height: 1.7;
+      opacity: 0.7; margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--saffron);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-size: 1rem; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26,15,0,0.1);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900; color: var(--saffron);
+    }
+    .stat-label { font-size: 0.82rem; opacity: 0.6; margin-top: 0.2rem; }
+
+    /* SECTION TITLES */
+    .section-title {
+      text-align: center; margin-bottom: 3.5rem;
+    }
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; margin-bottom: 0.8rem;
+    }
+    .section-title p { opacity: 0.6; font-size: 1rem; }
+
+    /* PRODUCTS */
+    .products {
+      padding: 6rem 5%;
+      background: var(--white);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(232,130,26,0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--saffron);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(232,130,26,0.12); }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .product-desc { font-size: 0.9rem; opacity: 0.65; line-height: 1.6; margin-bottom: 1.2rem; }
+    .product-badge {
+      display: inline-block;
+      background: rgba(232,130,26,0.1);
+      color: var(--saffron);
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 6rem 5%;
+      background: var(--cream);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .price-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(26,15,0,0.08);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card.featured {
+      background: var(--saffron);
+      color: var(--white);
+      transform: scale(1.04);
+      box-shadow: 0 20px 50px rgba(232,130,26,0.3);
+    }
+    .price-card:not(.featured):hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+    .price-label {
+      font-size: 0.78rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
+      opacity: 0.6; margin-bottom: 1rem;
+    }
+    .price-card.featured .price-label { opacity: 0.8; color: var(--white); }
+    .price-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--saffron); margin: 0.8rem 0 0.3rem;
+    }
+    .price-card.featured .price-amount { color: var(--white); }
+    .price-unit { font-size: 0.85rem; opacity: 0.6; margin-bottom: 1.5rem; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 1.8rem; }
+    .price-features li {
+      font-size: 0.88rem; padding: 0.4rem 0;
+      opacity: 0.75; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .price-features li::before { content: '✓'; color: var(--saffron); font-weight: 700; }
+    .price-card.featured .price-features li::before { color: var(--white); }
+    .btn-order {
+      display: block; width: 100%;
+      padding: 0.8rem;
+      border-radius: 50px;
+      border: 2px solid var(--saffron);
+      background: transparent;
+      color: var(--saffron);
+      font-size: 0.9rem; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-order:hover { background: var(--saffron); color: var(--white); }
+    .price-card.featured .btn-order {
+      background: var(--white); color: var(--saffron);
+      border-color: var(--white);
+    }
+    .price-card.featured .btn-order:hover { background: rgba(255,255,255,0.85); }
+
+    /* CONTACT */
+    .contact {
+      padding: 6rem 5%;
+      background: var(--deep);
+      color: var(--cream);
+    }
+    .contact .section-title h2 { color: var(--cream); }
+    .contact .section-title p { color: rgba(253,246,236,0.5); }
+    .contact-wrapper {
+      max-width: 700px; margin: 0 auto;
+      display: grid; gap: 1rem;
+    }
+    .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-wrapper input,
+    .contact-wrapper textarea,
+    .contact-wrapper select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-wrapper input::placeholder,
+    .contact-wrapper textarea::placeholder { color: rgba(253,246,236,0.35); }
+    .contact-wrapper input:focus,
+    .contact-wrapper textarea:focus,
+    .contact-wrapper select:focus { border-color: var(--saffron); }
+    .contact-wrapper textarea { resize: vertical; min-height: 120px; }
+    .contact-wrapper select option { background: var(--deep); }
+    .btn-submit {
+      width: 100%;
+      background: var(--saffron);
+      color: var(--white);
+      border: none;
+      padding: 1.1rem;
+      border-radius: 50px;
+      font-size: 1rem; font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: var(--gold); transform: translateY(-2px); }
+
+    .contact-info {
+      display: flex; gap: 2.5rem;
+      justify-content: center;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .contact-info-item {
+      text-align: center;
+    }
+    .contact-info-item .icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .contact-info-item p { font-size: 0.88rem; opacity: 0.5; }
+    .contact-info-item strong { font-size: 0.95rem; }
+
+    /* FOOTER */
+    footer {
+      background: #0f0800;
+      color: rgba(253,246,236,0.4);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+    }
+    footer span { color: var(--saffron); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulse-wa 2.5s infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 6px 36px rgba(37,211,102,0.7); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero::after { display: none; }
+      .contact-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .price-card.featured { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Shree Vinayak<span> Doodh Products</span></div>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="nav-cta">Order Karo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">🌿 100% Shudh • Jaipur se • 4 Branches</div>
+    <h1>Taza <em>Paneer</em>,<br/>Seedha Aapke Ghar</h1>
+    <p>Gaon ke taaze doodh se bana, bina kisi milawat ke. Rozana subah tayaar — hotels, restaurants, aur ghar sab ke liye. Shahpura • Viratnagar • Ringus • Salasar</p>
+    <a href="#pricing" class="btn-primary">Orders Dekho →</a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Khush Customers</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Shudh Doodh</div>
+      </div>
+      <div>
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Fresh Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-title">
+    <h2>Hamare Products</h2>
+    <p>Har need ke liye sahi paneer</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🧀</div>
+      <div class="product-name">Fresh Soft Paneer</div>
+      <div class="product-desc">Rozana subah tayaar, ekdum naram aur taza. Ghar ke khane ke liye perfect.</div>
+      <span class="product-badge">Bestseller</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🍽️</div>
+      <div class="product-name">Bulk Restaurant Pack</div>
+      <div class="product-desc">Hotels aur dhabas ke liye bada order. Consistent quality, guaranteed freshness.</div>
+      <span class="product-badge">Wholesale</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🧊</div>
+      <div class="product-name">Frozen Paneer Block</div>
+      <div class="product-desc">Long shelf life ke liye. Stocking ke liye ideal — flavor bilkul waisi hi rehti hai.</div>
+      <span class="product-badge">Long Lasting</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-title">
+    <h2>Simple Pricing</h2>
+    <p>Koi hidden charges nahi — jo dikhe wahi rate</p>
+  </div>
+  <div class="pricing-grid" style="max-width:620px;">
+    <div class="price-card">
+      <div class="price-label">Ghar ke liye</div>
+      <div class="price-name">Chhota Pack</div>
+      <div class="price-amount">₹80</div>
+      <div class="price-unit">250 gram</div>
+      <ul class="price-features">
+        <li>Fresh daily delivery</li>
+        <li>Soft texture</li>
+        <li>No preservatives</li>
+      </ul>
+      <a href="#contact" class="btn-order">Order Karo</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-label">Most Popular</div>
+      <div class="price-name">Family Pack</div>
+      <div class="price-amount">₹280</div>
+      <div class="price-unit">1 kilogram</div>
+      <ul class="price-features">
+        <li>Best value pack</li>
+        <li>Free delivery in Jaipur</li>
+        <li>Weekly subscription available</li>
+      </ul>
+      <a href="#contact" class="btn-order">Order Karo</a>
+    </div>
+    <div class="price-card" style="border: 2px dashed rgba(232,130,26,0.35); background: rgba(232,130,26,0.04);">
+      <div class="price-label">Business / Hotel / Dhaba</div>
+      <div class="price-name">Bulk Order</div>
+      <div style="font-size:3rem; margin: 1rem 0;">🤝</div>
+      <p style="font-size:0.9rem; opacity:0.7; margin-bottom:1.5rem; line-height:1.6;">Wholesale rates ke liye directly hum se baat karo. Custom quantity, daily supply contract, aur special deals available hain.</p>
+      <a href="https://wa.me/917425830827?text=Namaste%2C%20mujhe%20bulk%20paneer%20order%20ke%20baare%20mein%20baat%20karni%20hai." class="btn-order" target="_blank" style="background:#25D366; color:white; border-color:#25D366;">💬 WhatsApp Karo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-title">
+    <h2>Order Ya Inquiry Karo</h2>
+    <p>Fill karo neeche — hum 2 ghante mein contact karenge</p>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-row">
+      <input type="text" placeholder="Aapka Naam *" />
+      <input type="tel" placeholder="Phone Number *" />
+    </div>
+    <select>
+      <option value="" disabled selected>Product Select Karo</option>
+      <option>Fresh Soft Paneer (250g - ₹80)</option>
+      <option>Family Pack (1kg - ₹280)</option>
+      <option>Frozen Paneer Block</option>
+      <option>Bulk / Business Order (Contact ke liye)</option>
+    </select>
+    <input type="text" placeholder="Delivery Address (Jaipur)" />
+    <textarea placeholder="Koi aur sawaal ya special requirement?"></textarea>
+    <button class="btn-submit" onclick="this.textContent='✅ Message Bhej Diya!'; this.style.background='#2a7a2a';">
+      Order Submit Karo 🧀
+    </button>
+  </div>
+  <div class="contact-info">
+    <div class="contact-info-item">
+      <div class="icon">📞</div>
+      <strong>+91 74258 30827</strong>
+      <p>Subah 7 baje se raat 9 baje</p>
+    </div>
+    <div class="contact-info-item">
+      <div class="icon">📍</div>
+      <strong>7425830827/A94, Keshav Nagar 2nd</strong>
+      <p>Jaisinghpura Khor, Jaipur – 302027</p>
+    </div>
+    <div class="contact-info-item">
+      <div class="icon">🏪</div>
+      <strong>Branches</strong>
+      <p>Shahpura • Viratnagar • Ringus • Salasar</p>
+    </div>
+    <div class="contact-info-item">
+      <div class="icon">💬</div>
+      <a href="https://wa.me/917425830827?text=Namaste%2C%20mujhe%20paneer%20order%20karna%20hai." target="_blank" style="color:#25D366; text-decoration:none; font-weight:600;">WhatsApp Karo</a>
+      <p>Turant reply milega</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2024 <span>Shree Vinayak Doodh Products</span> — Jaisinghpura Khor, Jaipur, Rajasthan 302027. Pyaar se banaya, shudh doodh se.
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-float" href="https://wa.me/917425830827?text=Namaste%2C%20mujhe%20paneer%20order%20karna%20hai." target="_blank" title="WhatsApp par order karo">💬</a>
+
+</body>
+</html>
